@@ -102,6 +102,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	private static String pass = null;
 	public static String[] values = null;
 	private int success = LauncherFrame.ERROR_IN_LAUNCH;
+	private MP3Player mp3player;
 
 	public static final GameUpdater gameUpdater = new GameUpdater();
 	OptionDialog options;
@@ -346,6 +347,8 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		setFocusTraversalPolicy(new SpoutFocusTraversalPolicy(order));
 		
 		loginButton.setEnabled(true); //enable once logins are read
+		mp3player = new MP3Player(LoginForm.class.getResourceAsStream("/resources/himno_ok.mp3"));
+		mp3player.play();
 	}
 
 	public void stateChanged(String fileName, float progress) {
