@@ -33,9 +33,9 @@
 
 	<!-- Source code -->
 	<scm>
-		<developerConnection>scm:git:git@github.com:SpoutDev/${project.name}.git</developerConnection>
-		<connection>scm:git:git://github.com/SpoutDev/${project.name}.git</connection>
-		<url>https://github.com/SpoutDev/${project.name}</url>
+		<developerConnection>scm:git:git@github.com:Acampadas21/${project.name}.git</developerConnection>
+		<connection>scm:git:git://github.com/Acampadas21/${project.name}.git</connection>
+		<url>https://github.com/Acampadas21/${project.name}</url>
 	</scm>
 
 	<!-- Continuous integration -->
