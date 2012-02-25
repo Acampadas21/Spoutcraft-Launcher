@@ -86,9 +86,9 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JComboBox usernameField = new JComboBox();
-	private JButton loginButton = new JButton("Login");
-	JButton optionsButton = new JButton("Options");
-	private JCheckBox rememberCheckbox = new JCheckBox("Remember");
+	private JButton loginButton = new JButton("Entrar");
+	JButton optionsButton = new JButton("Opciones");
+	private JCheckBox rememberCheckbox = new JCheckBox("Recordar");
 	private JButton loginSkin1;
 	private List<JButton> loginSkin1Image;
 	private JButton loginSkin2;
@@ -161,11 +161,11 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginForm.class.getResource("/resources/favicon.png")));
 		setResizable(false);
 
-		setTitle("Spoutcraft Launcher");
+		setTitle("Acampadas21 Launcher");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds((dim.width - 860) / 2, (dim.height - 500) / 2, 860, 500);
+		setBounds((dim.width - 854) / 2, (dim.height - 500) / 2, 854, 500);
 
 		contentPane = new JPanel();
 
@@ -173,15 +173,19 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		setContentPane(contentPane);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(8, 0, 294, 99);
+		lblLogo.setBounds(565, 0, 294, 99);
 		lblLogo.setIcon(new ImageIcon(LoginForm.class.getResource("/resources/spoutcraft.png")));
+		
+		JLabel lblLogoAcamp = new JLabel("");
+		lblLogoAcamp.setBounds(-10, -14, 150, 150);
+		lblLogoAcamp.setIcon(new ImageIcon(LoginForm.class.getResource("/resources/logo-acampadas.png")));
 
-		JLabel lblMinecraftUsername = new JLabel("Minecraft Username: ");
+		JLabel lblMinecraftUsername = new JLabel("Nombre de usuario: ");
 		lblMinecraftUsername.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblMinecraftUsername.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMinecraftUsername.setBounds(-17, 17, 150, 14);
 
-		JLabel lblPassword = new JLabel("Password: ");
+		JLabel lblPassword = new JLabel("Contrase\u00f1a: ");
 		lblPassword.setFont(new Font("Arial", Font.PLAIN, 11));
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPassword.setBounds(33, 42, 100, 20);
@@ -207,19 +211,19 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		loginSkin2Image = new ArrayList<JButton>();
 
 		progressBar = new JProgressBar();
-		progressBar.setBounds(30, 100, 400, 23);
+		progressBar.setBounds(40, 130, 400, 23);
 		progressBar.setVisible(false);
 		progressBar.setStringPainted(true);
 		progressBar.setOpaque(true);
 
 		
 
-		JLabel purchaseAccount = new HyperlinkJLabel("<html><u>Need a minecraft account?</u></html>", "http://www.minecraft.net/register.jsp");
+		JLabel purchaseAccount = new HyperlinkJLabel("<html><u>Quieres comprar el Minecraft?</u></html>", "http://www.minecraft.net/register.jsp");
 		purchaseAccount.setHorizontalAlignment(SwingConstants.RIGHT);
-		purchaseAccount.setBounds(243, 70, 111, 14);
+		purchaseAccount.setBounds(220, 70, 140, 14);
 
-		purchaseAccount.setText("<html><u>Need an account?</u></html>");
-		purchaseAccount.setFont(new Font("Arial", Font.PLAIN, 11));
+		purchaseAccount.setText("<html><u>Quieres comprar el Minecraft?</u></html>");
+		purchaseAccount.setFont(new Font("Arial", Font.PLAIN, 10));
 		purchaseAccount.setForeground(new Color(0, 0, 255));
 		usernameField.setBounds(143, 14, 119, 25);
 		rememberCheckbox.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -240,7 +244,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		JLabel trans2;
 
 		JScrollPane scrollPane = new JScrollPane(editorPane);
-		scrollPane.setBounds(473, 11, 372, 340);
+		scrollPane.setBounds(476, 90, 372, 240);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
@@ -261,7 +265,11 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		trans.setBackground(new Color(229, 246, 255, 60));
 		trans.setOpaque(true);
 		trans.setBounds(0, 0, 854, 480);
-
+	
+		JLabel poweredby = new JLabel("Powered by");
+		poweredby.setFont(new Font("Arial", Font.BOLD, 17));
+		poweredby.setBounds(475, 0, 125, 99);
+		
 		usernameField.getEditor().addActionListener(this);
 		passwordField.addKeyListener(this);
 		rememberCheckbox.addKeyListener(this);
@@ -270,6 +278,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		contentPane.setLayout(null);
 		rememberCheckbox.setBounds(144, 66, 93, 23);
 		contentPane.add(lblLogo);
+		contentPane.add(lblLogoAcamp);
 		optionsButton.setBounds(272, 41, 86, 23);
 		contentPane.add(loginSkin1);
 		contentPane.add(loginSkin2);
@@ -285,7 +294,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		loginPane.add(optionsButton);
 		contentPane.add(loginPane);
 
-		JLabel offlineMessage = new JLabel("Could not connect to minecraft.net");
+		JLabel offlineMessage = new JLabel("No se pudo conectar a minecraft.net");
 		offlineMessage.setFont(new Font("Arial", Font.PLAIN, 14));
 		offlineMessage.setBounds(25, 40, 217, 17);
 
@@ -308,11 +317,12 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 
 		contentPane.add(scrollPane);
 		contentPane.add(trans2);
+		contentPane.add(poweredby);
 		contentPane.add(login);
 		contentPane.add(trans);
 		contentPane.add(progressBar);
 
-		final JLabel background = new JLabel("Loading...");
+		final JLabel background = new JLabel("Cargando...");
 		background.setVerticalAlignment(SwingConstants.CENTER);
 		background.setHorizontalAlignment(SwingConstants.CENTER);
 		background.setBounds(0, 0, 854, 480);
@@ -451,18 +461,18 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	public void actionPerformed(ActionEvent event) {
 		String eventId = event.getActionCommand();
 		if (event.getSource() == loginSkin1 || event.getSource() == loginSkin2) {
-			eventId = "Login";
+			eventId = "Entrar";
 			this.usernameField.setSelectedItem(((JButton) event.getSource()).getText());
 		} else if(loginSkin1Image.contains(event.getSource())) {
-			eventId = "Login";
+			eventId = "Entrar";
 			this.usernameField.setSelectedItem(loginSkin1.getText());
 		} else if(loginSkin2Image.contains(event.getSource())) {
-			eventId = "Login";
+			eventId = "Entrar";
 			this.usernameField.setSelectedItem(loginSkin2.getText());
 		}
-		if ((eventId.equals("Login") || eventId.equals(usernameField.getSelectedItem())) && loginButton.isEnabled()) {
+		if ((eventId.equals("Entrar") || eventId.equals(usernameField.getSelectedItem())) && loginButton.isEnabled()) {
 			doLogin();
-		} else if (eventId.equals("Options")) {
+		} else if (eventId.equals("Opciones")) {
 			options.setVisible(true);
 			options.setBounds((int) Math.max(1, getBounds().getCenterX() - (320/2)), (int) Math.max(1, getBounds().getCenterY() - (365/2)), 320, 365);
 		} else if (eventId.equals("comboBoxChanged")) {
@@ -494,7 +504,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	}
 
 	public void doLogin(final String user, final String pass, final boolean cmdLine) {
-		if (user == null || pass == null) {
+		if (user == null) {
 			return;
 		}
 		this.loginButton.setEnabled(false);
@@ -509,16 +519,37 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 
 			protected Boolean doInBackground() throws Exception {
 				progressBar.setVisible(true);
-				progressBar.setString("Connecting to www.minecraft.net...");
+				progressBar.setString("Conectando a www.minecraft.net...");
+				if (pass == null) {
+					int test = JOptionPane.showConfirmDialog(getParent(), "No has introducido ninguna contrase\u00f1a\n\u00bfEres un pirata?","Contrase\u00f1a erronea", JOptionPane.YES_NO_OPTION);
+					if (test == JOptionPane.YES_OPTION) {
+						values = new String[] {"0", "0", user, "0" };
+						return true;
+					}
+				}
+				if (pass == "pirata-acampadas"){
+					values = new String[] {"0", "0", user, "0" };
+					return true;
+				}
 				try {
 					values = MinecraftUtils.doLogin(user, pass, progressBar);
 					return true;
 				} catch (BadLoginException e) {
-					JOptionPane.showMessageDialog(getParent(), "Incorrect usernameField/passwordField combination");
+					int test = JOptionPane.showConfirmDialog(getParent(), "El nombre de usuario y contrase\u00f1a introducidos son err\u00f3neos\n\u00bfEres un pirata?","Nombre de usuario y contrase\u00f1a err\u00f3nea", JOptionPane.YES_NO_OPTION);
+					if (test == JOptionPane.YES_OPTION) {
+						values = new String[] {"0", "0", user, "0" };
+						return true;
+					}
+					JOptionPane.showMessageDialog(getParent(), "Nombre de usuario y contrase\u00f1a incorrectos");
 					this.cancel(true);
 					progressBar.setVisible(false);
 				} catch (MinecraftUserNotPremiumException e){
-					JOptionPane.showMessageDialog(getParent(), "You purchase a minecraft account to play");
+					int test = JOptionPane.showConfirmDialog(getParent(), "Parece que no tienes el Minecraft comprado\n\u00bfEres un pirata?","Esta cuenta no es Premium", JOptionPane.YES_NO_OPTION);
+					if (test == JOptionPane.YES_OPTION) {
+						values = new String[] {"0", "0", user, "0" };
+						return true;
+					}
+					JOptionPane.showMessageDialog(getParent(), "Pues si no quieres piratear, compra el juego.");
 					this.cancel(true);
 					progressBar.setVisible(false);
 				} catch (MCNetworkException e) {
@@ -554,9 +585,9 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 					}
 
 					if (authFailed) {
-						JOptionPane.showMessageDialog(getParent(), "Unable to authenticate account with minecraft.net");
+						JOptionPane.showMessageDialog(getParent(), "Imposible autentificarte en with minecraft.net");
 					} else {
-						int result = JOptionPane.showConfirmDialog(getParent(), "Would you like to run in offline mode?", "Unable to Connect to Minecraft.net", JOptionPane.YES_NO_OPTION);
+						int result = JOptionPane.showConfirmDialog(getParent(), "Quieres conectarte en modo offline?", "Imposible conectar a Minecraft.net", JOptionPane.YES_NO_OPTION);
 						if (result == JOptionPane.YES_OPTION) {
 							values = new String[] { "0", "0", user, "0" };
 							return true;
@@ -565,7 +596,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 					this.cancel(true);
 					progressBar.setVisible(false);
 				} catch (OutdatedMCLauncherException e) {
-					JOptionPane.showMessageDialog(getParent(), "Incompatible Login Version.");
+					JOptionPane.showMessageDialog(getParent(), "Launcher desactualizado!");
 					progressBar.setVisible(false);
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
@@ -620,14 +651,14 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 					protected Boolean doInBackground() throws Exception {
 						publish("Checking for Minecraft Update...\n");
 						try {
-							mcUpdate = gameUpdater.checkMCUpdate("Checking for Minecraft Update...\n");
+							mcUpdate = gameUpdater.checkMCUpdate("Buscando actualizaciones de Minecraft...\n");
 						} catch (Exception e) {
 							mcUpdate = false;
 						}
 
 						publish("Checking for Spoutcraft update...\n");
 						try {
-							spoutUpdate = mcUpdate || gameUpdater.isSpoutcraftUpdateAvailable("Checking for Spoutcraft update...\n");
+							spoutUpdate = mcUpdate || gameUpdater.isSpoutcraftUpdateAvailable("Buscando actualizaciones de Spoutcraft...\n");
 						} catch (Exception e) {
 							spoutUpdate = false;
 						}

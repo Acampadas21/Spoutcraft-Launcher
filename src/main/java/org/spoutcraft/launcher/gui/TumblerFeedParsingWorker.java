@@ -50,7 +50,7 @@ public class TumblerFeedParsingWorker extends SwingWorker<Object, Object>{
 	@Override
 	protected Object doInBackground() throws Exception {
 		try {
-			URL url = new URL("http://updates.getspout.org/");
+			URL url = new URL("http://www.acampadas21.net/launcher/novedades.php");
 			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 			if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
 				editorPane.setVisible(false);
@@ -62,11 +62,6 @@ public class TumblerFeedParsingWorker extends SwingWorker<Object, Object>{
 
 				String text = editorPane.getText();
 
-				int index = text.indexOf("<!-- BEGIN TUMBLR CODE -->");
-				int endIndex = text.indexOf("<!-- END TUMBLR CODE -->") + "<!-- END TUMBLR CODE -->".length();
-				if (index > -1 && endIndex > -1) {
-					text = text.substring(0, index) + text.substring(endIndex);
-				}
 				text = text.replaceAll("<li>", "- ");
 				text = text.replaceAll("</li>", "<br/>");
 				text = text.replaceAll("<p>", "");
@@ -90,12 +85,12 @@ public class TumblerFeedParsingWorker extends SwingWorker<Object, Object>{
 
 	private String getErrorMessage() {
 		String[] errors = {
-			"Oh dear, I'm out of tea and crumpets again. I'll have to go make some more.",
-			"I'm sorry, were you looking for something here? I couldn't find it.",
-			"This isn't the Tumblr news feed you are looking for. Move along now.",
-			"What do you mean the website is down...Hey! What's that over there!",
-			"Looks like the %mob%s got into the servers again...",
-			"Oh Noes! Our Tumblr Feed is Down!"
+			"Oh, parece que no se ha podido contactar con el servidor de noticias...",
+			"No pude encontrar informaci—n para mostrar aqu&iacute;...",
+			"Circulen, no hay nada que ver aqu&iacute;...",
+			"Dices que el servidor est&aacute; caid...Eh! Qu&eacute; es eso de ah&iacute;!",
+			"Parece que unos %mob%s se han apoderado del servidor!",
+			"Oh Noes! Nuestro servidor de noticias ha ca&iacute;do!"
 
 		};
 		return errors[rand.nextInt(errors.length)].replaceAll("%mob%", getRandomMob());
@@ -106,13 +101,12 @@ public class TumblerFeedParsingWorker extends SwingWorker<Object, Object>{
 	}
 
 	private String getRandomMob() {
-		int mob = rand.nextInt(5);
+		int mob = rand.nextInt(4);
 		switch(mob) {
-			case 0: return "spider";
-			case 1: return "zombie";
-			case 2: return "creeper";
-			case 3: return "skeleton";
-			case 4: return "ghast";
+			case 0: return "zombie";
+			case 1: return "creeper";
+			case 2: return "skeleton";
+			case 3: return "ghast";
 			default: return "";
 		}
 	}

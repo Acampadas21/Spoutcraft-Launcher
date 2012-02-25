@@ -35,7 +35,7 @@ import org.jdesktop.swingworker.SwingWorker;
 import org.spoutcraft.launcher.async.Download;
 
 public class BackgroundImageWorker extends SwingWorker<Object, Object>{
-	private static final int IMAGE_CYCLE_TIME = 24 * 60 * 60 * 1000;
+	private static final int IMAGE_CYCLE_TIME = 60 * 1000;
 	private File backgroundImage;
 	private JLabel background;
 	public BackgroundImageWorker(File backgroundImage, JLabel background) {
@@ -47,7 +47,7 @@ public class BackgroundImageWorker extends SwingWorker<Object, Object>{
 	protected Object doInBackground() {
 		try {
 			if (!backgroundImage.exists() || backgroundImage.length() < 10*1024 || System.currentTimeMillis() - backgroundImage.lastModified() > IMAGE_CYCLE_TIME) {
-				Download download = new Download("http://www.spoutcraft.org/splash/random.png", backgroundImage.getPath());
+				Download download = new Download("http://www.acampadas21.net/launcher/random.php", backgroundImage.getPath());
 				download.run();
 			}
 		} catch (Exception e) {

@@ -58,27 +58,27 @@ public class OptionDialog extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
-	JRadioButton devBuilds = new JRadioButton("Always use development builds");
+	JRadioButton devBuilds = new JRadioButton("Usar versiones en desarrollo");
 
-	JRadioButton recBuilds = new JRadioButton("Always use recommended builds");
+	JRadioButton recBuilds = new JRadioButton("Usar versiones recomendadas");
 
-	JRadioButton customBuilds = new JRadioButton("Manual build selection");
+	JRadioButton customBuilds = new JRadioButton("Selecci\u00f3n manual");
 
-	JCheckBox clipboardCheckbox = new JCheckBox("Allow access to your clipboard");
+	JCheckBox clipboardCheckbox = new JCheckBox("Permitir acceso al portapapeles");
 
-	JCheckBox backupCheckbox = new JCheckBox("Include worlds when doing automated backup");
+	JCheckBox backupCheckbox = new JCheckBox("Incluir mundos en copias de seguridad");
 
-	JCheckBox retryLoginCheckbox = new JCheckBox("Retry after connection timeout");
+	JCheckBox retryLoginCheckbox = new JCheckBox("Reintentar despu\u00e9s de desconexi\u00f3n");
 
-	JCheckBox latestLWJGLCheckbox = new JCheckBox("Use latest LWJGL binaries");
+	JCheckBox latestLWJGLCheckbox = new JCheckBox("Usar \u00f4ltimos binarios LWJGL");
 
-	JCheckBox alwaysUpdateCheckbox = new JCheckBox("Always install updates");
+	JCheckBox alwaysUpdateCheckbox = new JCheckBox("Instalar siempre actualizaciones");
 
-	JCheckBox fastLoginCheckbox = new JCheckBox("Fast login");
+	JCheckBox fastLoginCheckbox = new JCheckBox("Login r\u00e1pido");
 
 	JComboBox memoryCombo = new JComboBox();
 
-	JButton clearCache = new JButton("Clear Cache");
+	JButton clearCache = new JButton("Limpiar Cache");
 
 	JLabel buildInfo = new JLabel();
 
@@ -303,7 +303,7 @@ public class OptionDialog extends JDialog implements ActionListener {
 		} else if (id.equals("Cancel")) {
 			this.setVisible(false);
 			this.dispose();
-		} else if (id.equals("Clear Cache")) {
+		} else if (id.equals("Limpiar Cache")) {
 			this.setAlwaysOnTop(false);
 			if (clearCache()) {
 				JOptionPane.showMessageDialog(getParent(), "Successfully cleared the cache.");
