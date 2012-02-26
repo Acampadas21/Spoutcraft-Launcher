@@ -68,9 +68,9 @@ public class OptionDialog extends JDialog implements ActionListener {
 
 	JCheckBox backupCheckbox = new JCheckBox("Incluir mundos en copias de seguridad");
 
-	JCheckBox retryLoginCheckbox = new JCheckBox("Reintentar despu\u00e9s de desconexi\u00fan");
+	JCheckBox retryLoginCheckbox = new JCheckBox("Reintentar despu\u00e9s de desconexi\u00f3n");
 
-	JCheckBox latestLWJGLCheckbox = new JCheckBox("Usar nuevos binarios LWJGL");
+	JCheckBox latestLWJGLCheckbox = new JCheckBox("Usar \u00faltimos binarios LWJGL");
 
 	JCheckBox alwaysUpdateCheckbox = new JCheckBox("Instalar siempre actualizaciones");
 
