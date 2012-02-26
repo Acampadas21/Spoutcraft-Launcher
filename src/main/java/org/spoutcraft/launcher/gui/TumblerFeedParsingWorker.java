@@ -31,16 +31,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Random;
-import javax.swing.JTextPane;
+
+import javax.swing.JEditorPane;
 
 import org.jdesktop.swingworker.SwingWorker;
 
 public class TumblerFeedParsingWorker extends SwingWorker<Object, Object>{
-	JTextPane editorPane;
+	JEditorPane editorPane;
 	private String username = null;
 	private Random rand = new Random();
-	public TumblerFeedParsingWorker(JTextPane editorPane) {
-		this.editorPane = editorPane;
+	public TumblerFeedParsingWorker(JEditorPane editorPane2) {
+		this.editorPane = editorPane2;
 	}
 
 	public void setUser(String name) {

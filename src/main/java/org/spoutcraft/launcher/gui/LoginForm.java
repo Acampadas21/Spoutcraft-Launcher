@@ -73,7 +73,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.HyperlinkEvent;
@@ -235,8 +235,9 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 
 		rememberCheckbox.setOpaque(false);
 
-		final JTextPane editorPane = new JTextPane();
+		final JEditorPane editorPane = new JEditorPane();
 		editorPane.setContentType("text/html");
+		editorPane.addHyperlinkListener(this);
 
 		tumblerFeed = new TumblerFeedParsingWorker(editorPane);
 		tumblerFeed.execute();
@@ -839,12 +840,14 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	}
 
 	public void hyperlinkUpdate(HyperlinkEvent event) {
-		try {
-			java.awt.Desktop.getDesktop().browse(event.getURL().toURI());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+		if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+			try {
+				java.awt.Desktop.getDesktop().browse(event.getURL().toURI());
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
