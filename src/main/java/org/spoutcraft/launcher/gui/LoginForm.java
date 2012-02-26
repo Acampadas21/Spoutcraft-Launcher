@@ -43,7 +43,9 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -74,6 +76,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 import org.jdesktop.swingworker.SwingWorker;
 
@@ -81,7 +85,7 @@ import org.spoutcraft.launcher.*;
 import org.spoutcraft.launcher.async.DownloadListener;
 import org.spoutcraft.launcher.exception.*;
 
-public class LoginForm extends JFrame implements ActionListener, DownloadListener, KeyListener, WindowListener {
+public class LoginForm extends JFrame implements ActionListener, DownloadListener, KeyListener, WindowListener, HyperlinkListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPasswordField passwordField;
@@ -832,6 +836,17 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 			isHash = true;
 			passwordHash = hash;
 		}
+	}
+
+	public void hyperlinkUpdate(HyperlinkEvent event) {
+		try {
+			java.awt.Desktop.getDesktop().browse(event.getURL().toURI());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
 
